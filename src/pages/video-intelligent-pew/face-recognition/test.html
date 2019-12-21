@@ -1,0 +1,321 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>看私房电影赢私房基金</title>
+  <meta name="description" content="description" />
+  <meta name="keywords" content="keywords" />
+  <link href="{{ url('assets/html/style/style.css') }}" type="text/css" rel="stylesheet" />
+  <script type="text/javascript" src="{{ url('assets/html/js/jquery-1.8.2.min.js') }}" ></script>
+  <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+</head>
+<body class="bodybg">
+<style>
+  .hide_me{display:none;}
+</style>
+<div class="logo" style="text-align: center;">
+  <div class="logo1"><img src="{{ url('assets/html/images/logo_js.png') }}"/></div>
+  <div class="logo"><img src="{{ url('assets/html/images/logo.png') }}"/></div>
+</div>
+<div class="video" style="z-index:11;position: absolute;">
+  <!--视频播放页面-->
+
+  <iframe id="frame_ioc"  frameborder="0" marginheight="5px" width="100%" style="z-index: 1;position:absolute;" src="http://v.qq.com/iframe/player.html?vid=l0159hgy6z3&amp"></iframe>
+
+
+</div>
+<div class="video2" onclick=""><img src="{{ url('assets/html/images/empty.png') }}"/></div>
+
+<div class="wt_tt">答题赢私房基金</div>
+
+<div class="wt_q1 qustion1">1.微电影的主人公结婚几年了？</div>
+<div class="wt_a1 qustion1"><label><input class="question_item" type="radio" name="q1" q_num="1" value="1" >A.7年 </label></div>
+<div class="wt_a1 qustion1"><label><input class="question_item" type="radio" name="q1" q_num="1" value="2"  >B.5年 </label></div>
+<div class="wt_a1 qustion1"><label><input class="question_item"  type="radio" name="q1" q_num="1" value="3"  >C.2年</label></div>
+
+<div class="wt_q1 qustion2">2 微电影中主人公藏私房钱打算去哪里旅游？</div>
+<div class="wt_a1 qustion2"><label><input class="question_item" type="radio" name="q2" q_num="2" value="1"  >A.普罗旺斯</label></div>
+<div class="wt_a1 qustion2"><label><input class="question_item" type="radio" name="q2"q_num="2" value="2" >B.爱琴海</label></div>
+<div class="wt_a1 qustion2"><label><input class="question_item" type="radio" name="q2" q_num="2" value="3" >C.圣托里尼</label></div>
+
+<div class="wt_q1 qustion3">3 最后女主人公是用什么方法找到私房钱的？</div>
+<div class="wt_a1 qustion3"><label><input class="question_item" type="radio" name="q3" q_num="3" value="1"  >A.老公自己交代</label></div>
+<div class="wt_a1 qustion3"><label><input class="question_item" type="radio" name="q3" q_num="3" value="2">B.自己敲开</label></div>
+<div class="wt_a1 qustion3"><label><input class="question_item" type="radio" name="q3" q_num="3" value="3"  >C.久盛地板售后服务</label></div>
+
+<div class="wt_q1">
+  <input  id="question_submit" type="submit" onclick="next_question();"
+          style="border:none;height:40px;width:220px;background:url({{ url('assets/html/images/next.png') }}) no-repeat;text-indent:-9999px;" />
+  <br/><span class="wt_tip">认真看哦，答对3题便有机会获得私房基金~</span>
+</div>
+
+
+<div id="huidu"  class="hide_me"></div>
+<div id="huidu2" class="share_fc" style="display:none;"></div>
+<div class="btn_tcfx share_fc" style="display:none;"><img src="{{ url('assets/html/images/fx_img.png') }}"></div>
+
+<div id="tanchu1" style="position:absolute;top: %;" class="hide_me">革命尚未成功，<br>同志仍需继续努力！<br/><br/>
+  <span id="again"><img src="{{  url('assets/html/images/again.png') }}"/></span>
+  <div class="cx"><img src="{{  url('assets/html/images/x.png') }}"></div>
+</div>
+
+<div id="tanchu2" class="hide_me" style='z-index: 1000;position:absolute;top:35%;'>
+  <div class="btm1e">恭喜小主！全部答对哟！</div>
+  <div style="clear:both;">
+    <div class="name">
+      <img src="{{  url('assets/html/images/ico_name.jpg') }}" style="width:24px;height:24px;margin:6px 5px 0 5px;">
+      <input id="user_name" type="text" name="name" value=""/>
+    </div>
+    <div class="name">
+      <img src="{{  url('assets/html/images/ico_phone.jpg') }}" style="width:24px;height:24px;margin:6px 5px 0 5px;">
+      <input  id="user_mobile" type="text" name="mobile" value=""/>
+    </div>
+    <div class="cx"><img src="{{  url('assets/html/images/x.png') }}"></div>
+  </div>
+  <div style="clear:both;">
+    <input  type="submit" onclick="answer_success_submit()"
+            style="border:none;height:40px;width:220px;margin:0 auto;background:url({{  url('assets/html/images/tijiao.png') }}) no-repeat;text-indent:-9999px;" />
+    <br>
+    <span class="ft04 cor_org">请留下您的信息，以便我们联系您领取奖金</span>
+  </div>
+</div>
+<div id="tjhou" class="hide_me" style='top:43%;'>
+  <div class="topcon">您的抽奖信息已放入抽奖箱咯！8月5日将在久盛地板官微公布获奖名单，敬请关注！
+  </div>
+  <img src="{{  url('assets/html/images/erweima_200.png') }}" style="width:70px;height:70px;text-align:center;margin-bottom:-15px;">
+  <div style="clear:both;"><br>
+    <img onclick="subscrible_submit()" src="{{  url('assets/html/images/btn_gzjs.png') }}"><br>
+    <img id="share_answer_success" src="{{  url('assets/html/images/btn_fx.png') }}"><br>
+    <span class="ft04 cor_org">快告诉好友们这个普大喜奔的消息吧！</span>
+  </div>
+  <div class="cx"><img src="{{  url('assets/html/images/x.png') }}"></div>
+</div>
+@if($signPackage)
+@include(WECHAT_VIEWS_DIR . 'common/jssdk_wx_config')
+<script>
+  var is_show_video = true;
+  $('.share_fc').click(function(){
+    $(this).hide();
+  });
+  $('.cx').click(function(){
+    $('#tjhou').css('display', 'none');
+    $('#tanchu1').css('display', 'none');
+    $('#tanchu2').css('display', 'none');
+    $('#huidu').css('display', 'none');
+    if(is_show_video){
+      $('.video').show();
+      $('#frame_ioc').show();
+    }
+
+  });
+  //显示分享浮层
+  function show_share_fc(){
+    $("#huidu2").css("display", "block");
+    $(".btn_tcfx").css("display", "block");
+    $('.share_fc').show();
+    $('#huidu').hide();
+  }
+  function  share_ok(){
+    var url = '{{  $share_ok_url }}';
+    $.post(url,{},function(data){
+      if(data.code == 0){
+        alert(data.message);
+      }else{
+
+      }
+    },'JSON');
+  }
+  var share_title = '看私房电影赢私房基金',
+    share_desc = '开卷答题赢千元私房基金';
+  $('#share_answer_success').click(function(){
+    show_share_fc();
+    wx.onMenuShareTimeline({
+      title: share_title ? share_title :'猜猜我吧钱放在哪里了，私房钱保卫战', // 分享标题
+      link: '{{ $share_link }}', // 分享链接
+      imgUrl: '{{ $share_img_url }}',success: function () {
+        // 用户确认分享后执行的回调函数
+        share_ok();
+      }
+    });
+    wx.onMenuShareAppMessage({
+      title: share_title ? share_title :'猜猜我吧钱放在哪里了，私房钱保卫战' , // 分享标题
+      desc: share_desc ? share_desc :'猜猜我吧钱放在哪里了，私房钱保卫战', // 分享描述
+      link: '{{ $share_link }}', // 分享链接
+      imgUrl: '{{ $share_img_url }}',success: function () {
+        // 用户确认分享后执行的回调函数
+        share_ok();
+      }
+    });
+    wx.onMenuShareQQ({
+      title: share_title ? share_title :'猜猜我吧钱放在哪里了，私房钱保卫战', // 分享标题
+      desc: share_desc ? share_desc :'猜猜我吧钱放在哪里了，私房钱保卫战', // 分享描述
+      link: '{{ $share_link }}', // 分享链接
+      imgUrl: '{{ $share_img_url  }}',
+      success: function () {
+        // 用户确认分享后执行的回调函数
+        share_ok();
+      }
+    });
+  })
+  wx.ready(function () {
+
+    wx.onMenuShareTimeline({
+      title: share_title ? share_title :'猜猜我吧钱放在哪里了，私房钱保卫战', // 分享标题
+      link: '{{ $share_link }}', // 分享链接
+      imgUrl: '{{ $share_img_url }}',success: function () {
+        // 用户确认分享后执行的回调函数
+        share_ok();
+      }
+    });
+    wx.onMenuShareAppMessage({
+      title: share_title ? share_title :'猜猜我吧钱放在哪里了，私房钱保卫战' , // 分享标题
+      desc: share_desc ? share_desc :'猜猜我吧钱放在哪里了，私房钱保卫战', // 分享描述
+      link: '{{ $share_link }}', // 分享链接
+      imgUrl: '{{ $share_img_url }}',success: function () {
+        // 用户确认分享后执行的回调函数
+        share_ok();
+      }
+    });
+    wx.onMenuShareQQ({
+      title: share_title ? share_title :'猜猜我吧钱放在哪里了，私房钱保卫战', // 分享标题
+      desc: share_desc ? share_desc :'猜猜我吧钱放在哪里了，私房钱保卫战', // 分享描述
+      link: '{{ $share_link }}', // 分享链接
+      imgUrl: '{{ $share_img_url  }}',
+      success: function () {
+        // 用户确认分享后执行的回调函数
+        share_ok();
+      }
+    });
+  });
+</script>
+@endif
+<script>
+  var  question_answer = "1,2,3,",
+    question_submit = $("#question_submit");//问题的正确答案
+  $('.qustion2, .qustion3').hide();
+  $('.question_item').each(function(){
+    $(this).bind('click',function(){
+      $('input[choose=1]').attr('choose', 0);
+      $(this).attr('choose', 1);
+    })
+  })
+  function subscrible_submit(){
+    location.href="http://mp.weixin.qq.com/s?__biz=MjM5NDM5ODEwOA==&mid=210692566&idx=1&sn=77f89bcba314372ce7653f893f2e928c#rd";
+  }
+  //再试一次
+  $("#again").click(function(){
+    $("#tanchu1").css("display", "none");
+    $("#huidu").css("display", "none");
+    $('.qustion1').show();
+    $('.qustion3').hide();
+    if(is_show_video){
+      $('.video').show();
+      $('#frame_ioc').show();
+    }
+    $('.question_item').attr('checked', false);
+
+    $('input[choose=1]').attr('choose', 0).attr('checked', false);
+    question_submit.css('background','url({{  url("assets/html/images/next.png") }}) no-repeat');
+  });
+  //下一题
+  function next_question(){
+    var active = $('input[choose=1]'),
+      question_num = active.attr('q_num');
+    if(question_num == 2){
+      question_submit.css('background','url({{  url("assets/html/images/tijiao.png") }}) no-repeat');
+    }
+    if(question_num == 3){
+      //提交问题
+      get_answer();
+    }else{
+      $('.qustion'+question_num).hide();
+      question_num++;
+      $('.qustion'+question_num).show();
+    }
+
+  }
+  //根据用户的答案，判断用户是否答题正确
+  function get_user_answer_status(user_answer){
+
+    var answer = false;
+    if(user_answer == question_answer){
+      answer = true;
+    }
+    return answer;
+  }
+  //获取用户选择的答案
+  function get_user_answer(){
+    var user_answer = '';
+    $('input:checked').each(function(){
+      user_answer += $(this).val()+',';
+    })
+    return user_answer;
+  }
+  //判断当前用户是否猜中
+  function get_answer(){
+    if(is_show_video){
+      $('.video').hide();
+      $('#frame_ioc').hide();
+    }
+
+    var user_answer = get_user_answer(),
+      answer_stauts = false;//答案的状态
+    answer_stauts = get_user_answer_status(user_answer);
+    if(answer_stauts == true){//答对；额
+      answer_ok();
+    }else{
+      not_answer();//答错
+    }
+  }
+  //答对了 填写联系的电话，和真实姓名，
+  function answer_ok(){
+    if(is_show_video){
+      $('.video').hide();
+      $('#frame_ioc').hide();
+    }
+    $("#huidu").show();
+    $('#tanchu2').show();
+  }
+
+  //没有猜中
+  function  not_answer(){
+    if(is_show_video){
+      $('.video').hide();
+      $('#frame_ioc').hide();
+    }
+    $("#huidu").show();
+    $('#tanchu1').show();
+
+  }
+  //添加联系方式到数据库
+  function answer_success_submit(){
+    //显示看微电影答题的链接
+    var mobile =$('#user_mobile').val(),
+      name  = $('#user_name').val(),
+      url = "{{ URL::route('wx_chou_jiang_add_user') }}";
+    if(!name){
+      alert('请填写您的名字');
+    }
+    if(!mobile){
+      alert('请填写您的电话号码');
+    }
+    //添加一个用户的抽奖信息
+    $.post(url, {name:name,mobile:mobile}, function(data){
+      if(data.code == 0){
+        //报名数据提交成
+        //alert("提交成功");
+        $('#tanchu2').hide();
+        $('#tjhou').show();
+        if(is_show_video){
+          $('.video').show();
+          $('#frame_ioc').show();
+        }
+
+      }else{
+        alert(data.message);
+      }
+    },'JSON');
+    return false;
+  }
+</script>
+</body>
+</html>
